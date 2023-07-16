@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pagination</title>
+    <script>
+      var items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+      var itemsPerPage = 3;
+      function displayItems(pageNumber) {
+        var startIndex = (pageNumber - 1) * itemsPerPage;
+        var endIndex = startIndex + itemsPerPage;
+        var container = document.getElementById("itemContainer");
+        container.innerHTML = "";
+
+        for (var i = startIndex; i < endIndex; i++) {
+          if (items[i]) {
+            var listItem = document.createElement("li");
+            listItem.textContent = items[i];
+            container.appendChild(listItem);
+          }
+        }
+      }
+      function handlePaginationClick(pageNumber) {
+        displayItems(pageNumber);
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Items</h2>
+    <ul id="itemContainer"></ul>
+    <div id="pagination">
+      <button onclick="handlePaginationClick(1)">1</button>
+      <button onclick="handlePaginationClick(2)">2</button>
+
+      <button onclick="handlePaginationClick(3)">3</button>
+    </div>
+
+    <script>
+      displayItems(1);
+    </script>
+  </body>
+</html>
